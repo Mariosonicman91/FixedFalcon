@@ -524,6 +524,19 @@ unsafe extern "C" fn game_attackairn(agent: &mut L2CAgentBase) {
     }
 }
 
+unsafe extern "C" fn sound_attackairn(agent: &mut L2CAgentBase) {
+    frame(agent.lua_state_agent, 6.0);
+    if macros::is_excute(agent) {
+        macros::PLAY_SE(agent, Hash40::new("se_captain_swing_l"));
+    }
+    frame(agent.lua_state_agent, 7.0);
+    if macros::is_excute(agent) {
+        macros::PLAY_SEQUENCE(agent, Hash40::new("seq_captain_rnd_attack"));
+        macros::PLAY_SE(agent, Hash40::new("se_captain_swing_l"));
+    }
+}
+
+
 // Dash Attack Changes
 
 unsafe extern "C" fn game_attackdash(agent: &mut L2CAgentBase) {
@@ -1251,10 +1264,9 @@ pub fn install() {
         .game_acmd("game_attackhi3", game_attackhi3, Priority::Default)
         .game_acmd("game_specialsstart", game_specialsstart, Priority::Default)
         .game_acmd("game_attack12", game_attack12, Priority::Default)
+        .sound_acmd("sound_attackairn", sound_attackairn, Priority::Default)
         .install();
 }
-
-
 
 
 
