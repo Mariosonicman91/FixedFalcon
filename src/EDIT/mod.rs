@@ -529,16 +529,13 @@ unsafe extern "C" fn sound_attackairn(agent: &mut L2CAgentBase) {
     if macros::is_excute(agent) {
         macros::PLAY_SEQUENCE(agent, Hash40::new("seq_captain_rnd_attack"));
         macros::PLAY_SE(agent, Hash40::new("se_captain_swing_l"));
-        macros::PLAY_SE(agent, Hash40::new("se_captain_swing_l"));
     }
 
     frame(agent.lua_state_agent, 12.0);
     if macros::is_excute(agent) {
-        macros::PLAY_SEQUENCE(agent, Hash40::new("seq_captain_rnd_attack"));
         macros::PLAY_SE(agent, Hash40::new("se_captain_swing_l"));
     }
 }
-
 
 // Dash Attack Changes
 
