@@ -527,9 +527,12 @@ unsafe extern "C" fn game_attackairn(agent: &mut L2CAgentBase) {
 unsafe extern "C" fn sound_attackairn(agent: &mut L2CAgentBase) {
     frame(agent.lua_state_agent, 6.0);
     if macros::is_excute(agent) {
+        macros::PLAY_SEQUENCE(agent, Hash40::new("seq_captain_rnd_attack"));
+        macros::PLAY_SE(agent, Hash40::new("se_captain_swing_l"));
         macros::PLAY_SE(agent, Hash40::new("se_captain_swing_l"));
     }
-    frame(agent.lua_state_agent, 7.0);
+
+    frame(agent.lua_state_agent, 12.0);
     if macros::is_excute(agent) {
         macros::PLAY_SEQUENCE(agent, Hash40::new("seq_captain_rnd_attack"));
         macros::PLAY_SE(agent, Hash40::new("se_captain_swing_l"));
